@@ -10,14 +10,19 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
+using static jxsUI.Helpers.AppValues;
+using static jxsUI.Helpers.WindowHelper;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
+
 
 namespace jxsUI
 {
@@ -26,6 +31,9 @@ namespace jxsUI
     /// </summary>
     public partial class App : Application
     {
+        private JxsUiMain main;
+
+     
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().
@@ -33,6 +41,8 @@ namespace jxsUI
         public App()
         {
             this.InitializeComponent();
+            SetUpColorTheme();
+            main= new JxsUiMain();
         }
 
         /// <summary>
@@ -42,10 +52,22 @@ namespace jxsUI
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            m_window = new MainWindow();
-            m_window.Activate();
+            Window window = main.GetMainWindow();
+            IWindowNative nativeWindow = window.As<IWindowNative>();
+            main.WindowPtr = nativeWindow.WindowHandle;
+            SetWindowPositionSize(nativeWindow.WindowHandle);
+            window.Activate();
         }
 
-        private Window m_window;
+      
+
+        [ComImport]
+        [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
+        [Guid("EECDBF0E-BAE9-4CB6-A68E-9598E1CB57BB")]
+        internal interface IWindowNative
+        {
+            IntPtr WindowHandle { get; }
+        }
+
     }
 }

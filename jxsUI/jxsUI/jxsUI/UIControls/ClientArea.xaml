@@ -1,0 +1,30 @@
+﻿<UserControl
+    x:Class="jxsUI.UIControls.ClientArea"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:jxsUI.UIControls"
+    xmlns:ctk="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Background="Transparent">
+
+    <Grid Background="{ThemeResource RegionBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{Binding ToolboxColumnDistance}"/>
+            <ColumnDefinition Width="16"/>
+            <ColumnDefinition Width="100*"/>
+        </Grid.ColumnDefinitions>
+        <Grid x:Name="Tools"/>
+    <ctk:GridSplitter Grid.Column="1" ResizeDirection="Columns"/>
+        <Grid x:Name="WorkAreas" Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100*"/>
+                <RowDefinition Height="16"/>
+                <RowDefinition Height="{Binding NotificationColumnDistance}"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" />
+            <ctk:GridSplitter Grid.Row="1" ResizeDirection ="Rows"/>
+            <Grid Grid.Row="2"/>
+        </Grid>
+    </Grid>
+</UserControl>

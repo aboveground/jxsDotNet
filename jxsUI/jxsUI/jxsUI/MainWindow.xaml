@@ -5,9 +5,18 @@
     xmlns:local="using:jxsUI"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+  xmlns:xc="using:CommunityToolkit.WinUI.UI.Controls"
+    xmlns:uiControls="using:jxsUI.UIControls"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-    </StackPanel>
+
+    <Grid Margin="3,0" Background="{ThemeResource RegionBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="33"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <uiControls:CustomTitleBar x:Name="AppTitleBar"/>
+        <Border Grid.RowSpan="2" BorderBrush="{x:Bind xBorderBrush}" BorderThickness="{x:Bind xBorderThickness}"/>
+        <uiControls:ClientArea x:Name="ClientArea" Grid.Row="1"/>
+    </Grid>
 </Window>
