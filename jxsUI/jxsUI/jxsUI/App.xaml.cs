@@ -52,14 +52,16 @@ namespace jxsUI
         /// <param name="args">Details about the launch request and process.</param>
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            Window window = main.GetMainWindow();
-            IWindowNative nativeWindow = window.As<IWindowNative>();
-            main.WindowPtr = nativeWindow.WindowHandle;
-            SetWindowPositionSize(nativeWindow.WindowHandle);
-            window.Activate();
+             mainWindow = main.GetMainWindow();
+            //  IWindowNative nativeWindow = window.As<IWindowNative>();
+            IntPtr hwnd = WinRT.Interop.WindowNative.GetWindowHandle(mainWindow);
+            main.WindowPtr = hwnd;
+            SetWindowPositionSize(hwnd);
+            main.SetupDistances();
+            mainWindow.Activate();
         }
 
-      
+        private Window mainWindow;
 
         [ComImport]
         [InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]

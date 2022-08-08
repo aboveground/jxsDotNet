@@ -37,7 +37,7 @@ namespace jxsUI.Helpers
         {
             ApplicationDataContainer ls = ApplicationData.Current.LocalSettings;
             var dpi = GetDpiForWindow(wHandle);
-            float scale = (float)dpi / 96;
+            float scale = 1f;// (float)dpi / 96;
             int left = (int)(scale * (ls.Values.TryGetValue(Left, out object x) ? (int)x : DefaultLeft));
             int top = (int)(scale * (ls.Values.TryGetValue(Top, out object y) ? (int)y : DefaultTop));
             int width = (int)(scale * (ls.Values.TryGetValue(Width, out object cx) ? (int)cx : DefaultWidth));

@@ -24,5 +24,7 @@ namespace jxsUI.UIControls
         {
             this.InitializeComponent();
         }
+
+
     }
 }

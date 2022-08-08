@@ -10,21 +10,21 @@
 
     <Grid Background="{ThemeResource RegionBrush}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="{Binding ToolboxColumnDistance}"/>
+            <ColumnDefinition Width="{Binding ToolboxColumnDistance, Mode=TwoWay}"/>
             <ColumnDefinition Width="16"/>
             <ColumnDefinition Width="100*"/>
         </Grid.ColumnDefinitions>
-        <Grid x:Name="Tools"/>
+        <Grid x:Name="Tools" />
     <ctk:GridSplitter Grid.Column="1" ResizeDirection="Columns"/>
         <Grid x:Name="WorkAreas" Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="100*"/>
                 <RowDefinition Height="16"/>
-                <RowDefinition Height="{Binding NotificationColumnDistance}"/>
+                <RowDefinition Height="{Binding NotificationColumnDistance, Mode=TwoWay}"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" />
             <ctk:GridSplitter Grid.Row="1" ResizeDirection ="Rows"/>
-            <Grid Grid.Row="2"/>
+            <Grid  Grid.Row="2"/>
         </Grid>
     </Grid>
 </UserControl>

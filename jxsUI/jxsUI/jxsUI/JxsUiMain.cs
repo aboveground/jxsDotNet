@@ -22,6 +22,7 @@ namespace jxsUI
             mainWindow = new MainWindow();
             mainWindow.Closed += MainWindow_Closed;
             mainWindow.SetClientArea(clientVm);
+   
             return mainWindow;
         }
 
